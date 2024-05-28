@@ -51,7 +51,7 @@ The source code is organized into different directories, each serving a specific
 - `src/App.vue`: Main application component.
 - `src/main.ts`: Main entry file that initializes the Vue application.
 
-## Scripts Personalizados
+## Custom Scripts
 
 - `npm run dev`: Starts the development server.
 - `npm run build`: Compiles and builds the application for production.
