@@ -15,6 +15,11 @@
         <v-skeleton-loader class="skeleton-loader" v-else></v-skeleton-loader>
       </v-col>
     </v-row>
+    <!-- Error message -->
+    <div v-if="error" class="error-message">
+      <p>{{ error }}</p>
+      <button @click="retryFetch">Retry</button>
+    </div>
   </v-container>
 </template>
 
@@ -32,7 +37,9 @@ export default {
         cosmos: null
       },
       // Loading indicator
-      loading: true
+      loading: true,
+      // Error message
+      error: null
     };
   },
   mounted() {
@@ -44,6 +51,8 @@ export default {
     // Method to fetch current prices from the API
     async fetchCurrentPrices() {
       try {
+        // Reset error
+        this.error = null;
         // Fetch prices from the API
         const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,dacxi,ethereum,cosmos&vs_currencies=usd');
         // Update prices in the data object
@@ -58,7 +67,14 @@ export default {
         console.error('Error fetching current prices:', error);
         // Set loading to false even if fetching fails
         this.loading = false;
+        // Set error message
+        this.error = 'Error fetching current prices. Please retry.';
       }
+    },
+    // Method to retry fetching prices
+    retryFetch() {
+      this.loading = true;
+      this.fetchCurrentPrices();
     }
   }
 };
@@ -89,5 +105,10 @@ h2 {
 
 .skeleton-loader {
   height: 50px;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 20px;
 }
 </style>
