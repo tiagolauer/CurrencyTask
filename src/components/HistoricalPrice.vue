@@ -10,7 +10,7 @@
         <form @submit.prevent="fetchHistoricalPrice" class="form">
           <!-- Select dropdown to choose coin -->
           <div class="selectCoin pb-2">
-            <label for="coin" style="color: #d1e000;">Select Coin:</label>
+            <label for="coin">Select Coin:</label>
             <select v-model="selectedCoin" required class="coin-select">
               <option value="bitcoin">Bitcoin (BTC)</option>
               <option value="dacxi">DACXI (DACXI)</option>
@@ -19,11 +19,11 @@
             </select>
           </div>
           <!-- Input field to select date and time -->
-          <label class="pb-2" for="datetime" style="color: #d1e000;">Select Date and Time:</label>
+          <label class="pb-2" for="datetime">Select Date and Time:</label>
           <input type="datetime-local" v-model="datetime" required class="datetime-input" />
           <!-- Button to trigger fetching of historical price -->
           <div class="button-container">
-            <v-btn type="submit" class="price-btn" color="#d1e000">Get Price</v-btn>
+            <v-btn type="submit" class="price-btn" color="primary">Get Price</v-btn>
           </div>
         </form>
       </v-card-text>
@@ -33,7 +33,7 @@
     <!-- Display historical price when available -->
     <v-card v-else-if="price !== null" class="price-card pb-2 animated-card">
       <v-card-text>
-        <span class="price-label" style="color: #d1e000;">{{ selectedCoin.toUpperCase() }}/USD: ${{ price }}</span>
+        <span class="price-label">{{ selectedCoin.toUpperCase() }}/USD: ${{ price }}</span>
       </v-card-text>
     </v-card>
   </v-container>
@@ -96,7 +96,6 @@ export default {
 
 .title {
   text-align: center;
-  color: #d1e000;
 }
 
 .form-card {
@@ -109,13 +108,17 @@ export default {
   flex-direction: column;
 }
 
+option {
+  color: #000;
+}
+
 .coin-select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;
   width: 100%;
-  color: #d1e000;
+  color: #ffffff;
 }
 
 .datetime-input {
@@ -124,7 +127,7 @@ export default {
   border-radius: 5px;
   margin-bottom: 10px;
   width: 100%;
-  color: #d1e000;
+  color: #ffffff;
 }
 
 .button-container {

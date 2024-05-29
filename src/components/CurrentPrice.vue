@@ -9,7 +9,7 @@
       <v-col v-for="(price, coin) in prices" :key="coin" cols="12" sm="6" md="4" class="price-col">
         <!-- Display price card when data is loaded -->
         <v-card class="price-card" v-if="!loading">
-          <v-card-text class="price-text" style="color: #d1e000;">{{ coin.toUpperCase() }}/USD: ${{ price
+          <v-card-text class="price-text">{{ coin.toUpperCase() }}/USD: ${{ price
             }}</v-card-text>
         </v-card>
         <!-- Display skeleton loader while data is loading -->
@@ -85,7 +85,6 @@ export default {
 <style scoped>
 h2 {
   text-align: center;
-  color: #d1e000;
 }
 
 .current-price {
